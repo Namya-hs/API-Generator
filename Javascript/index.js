@@ -2,6 +2,18 @@ var header = document.getElementsByClassName("headers")[0]
 var params = document.getElementsByClassName("params")[0]
 var route = document.getElementsByClassName("route")[0]
 var proceed = document.getElementsByClassName("proceed")[0]
+var checkbox = document.getElementById("body");
+var request = document.getElementById("requestBody");
+
+
+function CheckBoxx(){
+  if(checkbox.checked == true){
+    request.style.display="block"
+  }
+  else {
+    request.style.display='none'
+  }
+}
 
 proceed.addEventListener("click",()=>{
     console.log("check log");
