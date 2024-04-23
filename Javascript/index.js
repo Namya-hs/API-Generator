@@ -4,6 +4,8 @@ var route = document.getElementsByClassName("route")[0]
 var proceed = document.getElementsByClassName("proceed")[0]
 var checkbox = document.getElementById("body");
 var request = document.getElementById("requestBody");
+var checkboxResp = document.getElementById("respbody");
+var response = document.getElementById("responsebody");
 
 
 function CheckBoxx(){
@@ -12,6 +14,15 @@ function CheckBoxx(){
   }
   else {
     request.style.display='none'
+  }
+}
+
+function CheckBoxResponse() {
+  if(checkboxResp.checked == true){
+    response.style.display="block"
+  }
+  else {
+    response.style.display='none'
   }
 }
 
@@ -28,7 +39,7 @@ proceed.addEventListener("click",()=>{
         document.getElementsByClassName("headerbox")[0].innerHTML+=`
         <div class="row mt-2">
           <div class="col-sm-6">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" placeholder="Header value">
 
           </div>
           <div class="col-sm-6">
@@ -48,7 +59,7 @@ proceed.addEventListener("click",()=>{
         document.getElementsByClassName("querybox")[0].innerHTML+=`
         <div class="row mt-2">
           <div class="col-sm-6">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" placeholder="Query value">
 
           </div>
           <div class="col-sm-6">
@@ -67,7 +78,7 @@ proceed.addEventListener("click",()=>{
         document.getElementsByClassName("routebox")[0].innerHTML+=`
         <div class="row mt-2">
           <div class="col-sm-6">
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" placeholder="Route value">
 
           </div>
           <div class="col-sm-6">

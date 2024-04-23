@@ -1,0 +1,29 @@
+@keyframes cat {
+    0%{
+        left: 12px;
+    }
+    50%{
+        right: 12px;
+    }
+    100%{
+        left: 12px;
+    }
+}
+
+/* #cat{
+    position: relative;
+    animation: cat infinite  0.1 infinite;
+} */
+
+@keyframes leftRightVibration {
+    0% { transform: translateX(-2px); }
+    25% { transform: translateX(2px); }
+    50% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+    100% { transform: translateX(-2px); }
+  }
+  
+  .cat {
+    display: inline-block;
+    animation: leftRightVibration 1s infinite;
+  }
