@@ -58,6 +58,7 @@
   <h6 class="display-6 ">Incadea API Machine</h6>
   <hr>
 </div>
+<form>
   <div class="container">
 
     <div class="row">
@@ -74,7 +75,7 @@
       </div>
       <div class="col-sm-8">
         <label for="url">URL</label>
-        <input type="text" class="url form-control">
+        <input type="text" class="url form-control" name="url">
       </div>
 
     </div>
@@ -82,33 +83,33 @@
     <div class="row">
       <div class="col-sm-4">
         <label for="headers">HEADERS</label>
-        <input type="number" class="form-control headers">
+        <input type="number" class="form-control headers" name="header">
       </div>
       <div class="col-sm-4">
         <label for="query">QUERY</label>
-        <input type="number" class="form-control params">
+        <input type="number" class="form-control params" name="query">
       </div>
       <div class="col-sm-4"><label for="route">ROUTE</label>
-        <input type="number" class="form-control route">
+        <input type="number" class="form-control route" name="route">
       </div>
     </div>
 
     <div class="container mt-3">
-      <input onClick="CheckBoxx()" type="checkbox" class="" id="body">
+      <input onClick="CheckBoxx()" type="checkbox" class="" id="body" name="req-body">
       <label for="body">Does it contain request body??</label>
     </div>
 
     <div class="container mt-3" id="requestBody" style="display: none;">
-      <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
+      <textarea name="" class="form-control" id="" cols="30" rows="10" name="req-body-content"></textarea>
     </div>
 
     <div class="container mt-3">
-      <input onClick="CheckBoxResponse()" type="checkbox" class="" id="respbody">
+      <input onClick="CheckBoxResponse()" type="checkbox" class="" id="respbody" name="res-body">
       <label for="body">Does it contain response body??</label>
     </div>
 
     <div class="container mt-3" id="responsebody" style="display: none;">
-      <textarea name="" class="form-control" id="" cols="30" rows="10"></textarea>
+      <textarea name="" class="form-control" id="" cols="30" rows="10" name="res-body-content"></textarea>
     </div>
 
     <div class="container mt-3">
@@ -146,8 +147,8 @@
 
 
 
-    </div>  <button class="btn btn-warning preview mt-4">PREVIEW</button>
-
+    </div>  <button class="btn btn-warning preview mt-4" value="submit">PREVIEW</button>
+  </form>
   </div>
 
 

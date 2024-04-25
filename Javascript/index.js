@@ -39,7 +39,7 @@ proceed.addEventListener("click",()=>{
         document.getElementsByClassName("headerbox")[0].innerHTML+=`
         <div class="row mt-2">
           <div class="col-sm-6">
-            <input type="text" class="form-control" placeholder="Header value">
+            <input type="text" class="form-control" placeholder="Header value" name="header${i}">
 
           </div>
           <div class="col-sm-6">
@@ -59,7 +59,7 @@ proceed.addEventListener("click",()=>{
         document.getElementsByClassName("querybox")[0].innerHTML+=`
         <div class="row mt-2">
           <div class="col-sm-6">
-            <input type="text" class="form-control" placeholder="Query value">
+            <input type="text" class="form-control" placeholder="Query value" name="query${i}">
 
           </div>
           <div class="col-sm-6">
@@ -78,7 +78,7 @@ proceed.addEventListener("click",()=>{
         document.getElementsByClassName("routebox")[0].innerHTML+=`
         <div class="row mt-2">
           <div class="col-sm-6">
-            <input type="text" class="form-control" placeholder="Route value">
+            <input type="text" class="form-control" placeholder="Route value" name="route${i}">
 
           </div>
           <div class="col-sm-6">
@@ -92,3 +92,29 @@ proceed.addEventListener("click",()=>{
         </div>`
     }
 })
+var form =document.forms[1];
+form.onsubmit=  (e)=>{
+    e.preventDefault();
+
+    var ApiData = {}
+
+   for(let i=0;i<form.elements.length;i++)
+   {
+    ApiData[form.elements[i].name] = form.elements[i].value;
+ 
+    // if(form.elements[i].nodeName == "INPUT")
+    // {
+    //   ApiData[form.elements[i].name] = form.elements[i].value;
+    // }
+    // else if(form.elements[i].nodeName == "SELECT")
+    // {
+    //   ApiData[form.elements[i].name] = form.elements[i].value;
+    // }
+    // else {
+    //   ApiData[form.elements[i].name] = form.elements[i].value;
+    // }
+   }
+
+   console.log(ApiData);
+    
+}
