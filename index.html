@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  
+
   <!--Nav bar -->
   <nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-dark border-bottom border-body" data-bs-theme="dark">
     <div class="container-fluid">
@@ -52,102 +52,102 @@
       </div>
     </div>
   </nav>
-  
-<div class="container mt-4 text-center">
-  <img src="./styles/img/1298794.svg" alt=""  class="cat" class="img-fluid" height="200" width="200">
-  <h6 class="display-6 ">Incadea API Machine</h6>
-  <hr>
-</div>
-<form>
-  <div class="container">
 
-    <div class="row">
+  <div class="container mt-4 text-center">
+    <img src="./styles/img/1298794.svg" alt="" class="cat" class="img-fluid" height="200" width="200">
+    <h6 class="display-6 ">Incadea API Machine</h6>
+    <hr>
+  </div>
+  <form>
+    <div class="container">
 
-      <div class="col-sm-4">
-        <label for="method">METHOD</label>
-        <select name="method" id="" class="form-control">
-          <option value="GET">GET</option>
-          <option value="POST">POST</option>
-          <option value="PUT">PUT</option>
-          <option value="DELETE">DELETE</option>
-          <option value="PATCH">PATCH</option>
+      <div class="row">
+
+        <div class="col-sm-4">
+          <label for="method">METHOD</label>
+          <select name="method" id="" class="form-control">
+            <option value="GET">GET</option>
+            <option value="POST">POST</option>
+            <option value="PUT">PUT</option>
+            <option value="DELETE">DELETE</option>
+            <option value="PATCH">PATCH</option>
+          </select>
+        </div>
+        <div class="col-sm-8">
+          <label for="url">URL</label>
+          <input type="text" class="url form-control" name="url">
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class="col-sm-4">
+          <label for="headers">HEADERS</label>
+          <input type="number" class="form-control headers" name="header">
+        </div>
+        <div class="col-sm-4">
+          <label for="query">QUERY</label>
+          <input type="number" class="form-control params" name="query">
+        </div>
+        <div class="col-sm-4"><label for="route">ROUTE</label>
+          <input type="number" class="form-control route" name="route">
+        </div>
+      </div>
+
+      <div class="container mt-3">
+        <input onClick="CheckBoxx()" type="checkbox" class="" id="body" name="req-body">
+        <label for="body">Does it contain request body??</label>
+      </div>
+
+      <div class="container mt-3" id="requestBody" style="display: none;">
+        <textarea name="requestBody" class="form-control" id="" cols="30" rows="10" name="req-body-content"></textarea>
+      </div>
+
+      <div class="container mt-3">
+        <input onClick="CheckBoxResponse()" type="checkbox" class="" id="respbody" name="res-body">
+        <label for="body">Does it contain response body??</label>
+      </div>
+
+      <div class="container mt-3" id="responsebody" style="display: none;">
+        <textarea name="reposnseBody" class="form-control" id="" cols="30" rows="10" name="res-body-content"></textarea>
+      </div>
+
+      <div class="container mt-3">
+        <label for="Region">REGION</label>
+        <select name="Region" id="Region" class="form-control">
+          <option value="ASE">ASE</option>
+          <option value="OAB">OAB</option>
+          <option value="ASA">ASA</option>
+          <option value="VHC">VHC</option>
+          <option value="FREE">FREE</option>
         </select>
       </div>
-      <div class="col-sm-8">
-        <label for="url">URL</label>
-        <input type="text" class="url form-control" name="url">
-      </div>
+
+
+      <button class="btn btn-outline-primary proceed mt-4">PROCEED</button>
+
+
+
+
 
     </div>
 
-    <div class="row">
-      <div class="col-sm-4">
-        <label for="headers">HEADERS</label>
-        <input type="number" class="form-control headers" name="header">
-      </div>
-      <div class="col-sm-4">
-        <label for="query">QUERY</label>
-        <input type="number" class="form-control params" name="query">
-      </div>
-      <div class="col-sm-4"><label for="route">ROUTE</label>
-        <input type="number" class="form-control route" name="route">
-      </div>
-    </div>
+    <div class="container">
 
-    <div class="container mt-3">
-      <input onClick="CheckBoxx()" type="checkbox" class="" id="body" name="req-body">
-      <label for="body">Does it contain request body??</label>
-    </div>
+      <div class="row mt-2">
+        <div class="col-sm-4 headerbox alert ">
 
-    <div class="container mt-3" id="requestBody" style="display: none;">
-      <textarea name="requestBody" class="form-control" id="" cols="30" rows="10" name="req-body-content"></textarea>
-    </div>
-
-    <div class="container mt-3">
-      <input onClick="CheckBoxResponse()" type="checkbox" class="" id="respbody" name="res-body">
-      <label for="body">Does it contain response body??</label>
-    </div>
-
-    <div class="container mt-3" id="responsebody" style="display: none;">
-      <textarea name="reposnseBody" class="form-control" id="" cols="30" rows="10" name="res-body-content"></textarea>
-    </div>
-
-    <div class="container mt-3">
-      <label for="Region">REGION</label>
-      <select name="Region" id="Region" class="form-control">
-        <option value="ASE">ASE</option>
-        <option value="OAB">OAB</option>
-        <option value="ASA">ASA</option>
-        <option value="VHC">VHC</option>
-        <option value="FREE">FREE</option>
-      </select>
-    </div>
+        </div>
 
 
-    <button class="btn btn-outline-primary proceed mt-4">PROCEED</button>
+        <div class="col-sm-4 querybox alert alert"></div>
+
+        <div class="col-sm-4 routebox alert alert"></div>
 
 
 
 
-
-  </div>
-
-  <div class="container">
-
-    <div class="row mt-2">
-      <div class="col-sm-4 headerbox alert ">
-        
-      </div>
-
-
-      <div class="col-sm-4 querybox alert alert"></div>
-
-      <div class="col-sm-4 routebox alert alert"></div>
-
-
-
-
-    </div>  <button class="btn btn-warning preview mt-4" value="submit">PREVIEW</button>
+      </div> <button class="btn btn-warning preview mt-4" value="submit">PREVIEW</button>
   </form>
   </div>
 

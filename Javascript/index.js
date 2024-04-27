@@ -8,42 +8,41 @@ var checkboxResp = document.getElementById("respbody");
 var response = document.getElementById("responsebody");
 
 
-function CheckBoxx(){
-  if(checkbox.checked == true){
-    request.style.display="block"
+function CheckBoxx() {
+  if (checkbox.checked == true) {
+    request.style.display = "block"
   }
   else {
-    request.style.display='none'
+    request.style.display = 'none'
   }
 }
 
 function CheckBoxResponse() {
-  if(checkboxResp.checked == true){
-    response.style.display="block"
+  if (checkboxResp.checked == true) {
+    response.style.display = "block"
   }
   else {
-    response.style.display='none'
+    response.style.display = 'none'
   }
 }
 
-proceed.addEventListener("click",()=>{
-    console.log("check log");
-    let headerValue = header.value;
-    let paramsValue = params.value;
-    let routeValue = route.value;
-    document.getElementsByClassName("headerbox")[0].innerHTML=""
-    document.getElementsByClassName("querybox")[0].innerHTML=""
-    document.getElementsByClassName("routebox")[0].innerHTML=""
-    console.log(headerValue,paramsValue,routeValue);
-    for(let i =0;i<headerValue;i++){
-        document.getElementsByClassName("headerbox")[0].innerHTML+=`
+proceed.addEventListener("click", () => {
+  console.log("check log");
+  let headerValue = header.value;
+  let paramsValue = params.value;
+  let routeValue = route.value;
+  document.getElementsByClassName("headerbox")[0].innerHTML = ""
+  document.getElementsByClassName("querybox")[0].innerHTML = ""
+  document.getElementsByClassName("routebox")[0].innerHTML = ""
+  console.log(headerValue, paramsValue, routeValue);
+  for (let i = 0; i < headerValue; i++) {
+    document.getElementsByClassName("headerbox")[0].innerHTML += `
         <div class="row mt-2">
           <div class="col-sm-6">
             <input type="text" class="form-control" placeholder="Header value" name="header${i}">
 
           </div>
           <div class="col-sm-6">
-            <select name="HeaderType${i}" id="" class="form-control">
             <select name="headerVarType${i}" id="" class="form-control">
               <option value="string">string</option>
               <option value="int">integer</option>
@@ -52,19 +51,18 @@ proceed.addEventListener("click",()=>{
             </select>
           </div>
         </div>`
-    }
+  }
 
 
 
-    for(let i =0;i<paramsValue;i++){
-        document.getElementsByClassName("querybox")[0].innerHTML+=`
+  for (let i = 0; i < paramsValue; i++) {
+    document.getElementsByClassName("querybox")[0].innerHTML += `
         <div class="row mt-2">
           <div class="col-sm-6">
             <input type="text" class="form-control" placeholder="Query value" name="query${i}">
 
           </div>
           <div class="col-sm-6">
-            <select name="QueryType${i}" id="" class="form-control">
             <select name="queryVarType${i}" id="" class="form-control">
               <option value="string">string</option>
               <option value="int">integer</option>
@@ -73,18 +71,17 @@ proceed.addEventListener("click",()=>{
             </select>
           </div>
         </div>`
-    }
+  }
 
 
-    for(let i =0;i<routeValue;i++){
-        document.getElementsByClassName("routebox")[0].innerHTML+=`
+  for (let i = 0; i < routeValue; i++) {
+    document.getElementsByClassName("routebox")[0].innerHTML += `
         <div class="row mt-2">
           <div class="col-sm-6">
             <input type="text" class="form-control" placeholder="Route value" name="route${i}">
 
           </div>
           <div class="col-sm-6">
-            <select name="RouteType${i}" id="" class="form-control">
             <select name="routeVarType${i}" id="" class="form-control">
               <option value="string">string</option>
               <option value="int">integer</option>
@@ -93,26 +90,12 @@ proceed.addEventListener("click",()=>{
             </select>
           </div>
         </div>`
-    }
+  }
 })
-var form =document.forms[1];
-form.onsubmit=  (e)=>{
-    e.preventDefault();
+var form = document.forms[1];
+form.onsubmit = (e) => {
+  e.preventDefault();
 
-    var ApiData = {}
-
-   for(let i=0;i<form.elements.length;i++)
-   {
-    if(form.elements[i].type=="checkbox")
-    {
-      ApiData[form.elements[i].name] = form.elements[i].checked;
-    }else{
-      ApiData[form.elements[i].name] = form.elements[i].value;
-    }
-   
- 
-    // if(form.elements[i].nodeName == "INPUT")
-    // {
   var ApiData = {}
   var Header = new Array();
   var Query = new Array();
@@ -135,15 +118,19 @@ form.onsubmit=  (e)=>{
     // } else {
     //   ApiData[form.elements[i].name] = form.elements[i].value;
     // }
-    // else if(form.elements[i].nodeName == "SELECT")
-    // {
-    //   ApiData[form.elements[i].name] = form.elements[i].value;
-    // }
-    // else {
-    //   ApiData[form.elements[i].name] = form.elements[i].value;
-    // }
-   }
+    ApiData["headers"] = Header;
+    ApiData["queries"] = Query;
+    ApiData["routes"] = Route;
 
-   console.log(ApiData);
-    
+  }
+
+  console.log(ApiData);
+
+//clearing the local storage
+localStorage.clear();
+
+//store the data in local storage
+localStorage.setItem("ApiData", JSON.stringify(ApiData))
+
+location.href="./../preview.html"
 }
