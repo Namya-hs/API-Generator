@@ -44,6 +44,7 @@ proceed.addEventListener("click",()=>{
           </div>
           <div class="col-sm-6">
             <select name="HeaderType${i}" id="" class="form-control">
+            <select name="headerVarType${i}" id="" class="form-control">
               <option value="string">string</option>
               <option value="int">integer</option>
               <option value="dateTime">dateTime</option>
@@ -64,6 +65,7 @@ proceed.addEventListener("click",()=>{
           </div>
           <div class="col-sm-6">
             <select name="QueryType${i}" id="" class="form-control">
+            <select name="queryVarType${i}" id="" class="form-control">
               <option value="string">string</option>
               <option value="int">integer</option>
               <option value="dateTime">dateTime</option>
@@ -83,6 +85,7 @@ proceed.addEventListener("click",()=>{
           </div>
           <div class="col-sm-6">
             <select name="RouteType${i}" id="" class="form-control">
+            <select name="routeVarType${i}" id="" class="form-control">
               <option value="string">string</option>
               <option value="int">integer</option>
               <option value="dateTime">dateTime</option>
@@ -110,6 +113,26 @@ form.onsubmit=  (e)=>{
  
     // if(form.elements[i].nodeName == "INPUT")
     // {
+  var ApiData = {}
+  var Header = new Array();
+  var Query = new Array();
+  var Route = new Array();
+  for (let i = 0; i < form.elements.length; i++) {
+    // ApiData[form.elements[i].name] = form.elements[i].value;
+
+    // if (form.elements[i].nodeName == "INPUT" ) {
+      if (form.elements[i].name.toString().includes("header")) {
+        Header.push({ [form.elements[i].name]: form.elements[i].value });
+      } else if (form.elements[i].name.toString().includes("query")) {
+        Query.push({ [form.elements[i].name]: form.elements[i].value });
+      } else if (form.elements[i].name.toString().includes("route")) {
+        Route.push({ [form.elements[i].name]: form.elements[i].value });
+      } else if (form.elements[i].type == "checkbox") {
+        ApiData[form.elements[i].name] = form.elements[i].checked;
+      } else {
+        ApiData[form.elements[i].name] = form.elements[i].value;
+      }
+    // } else {
     //   ApiData[form.elements[i].name] = form.elements[i].value;
     // }
     // else if(form.elements[i].nodeName == "SELECT")
