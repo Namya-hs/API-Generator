@@ -43,7 +43,7 @@ proceed.addEventListener("click",()=>{
 
           </div>
           <div class="col-sm-6">
-            <select name="VarType" id="" class="form-control">
+            <select name="HeaderType${i}" id="" class="form-control">
               <option value="string">string</option>
               <option value="int">integer</option>
               <option value="dateTime">dateTime</option>
@@ -63,7 +63,7 @@ proceed.addEventListener("click",()=>{
 
           </div>
           <div class="col-sm-6">
-            <select name="VarType" id="" class="form-control">
+            <select name="QueryType${i}" id="" class="form-control">
               <option value="string">string</option>
               <option value="int">integer</option>
               <option value="dateTime">dateTime</option>
@@ -82,7 +82,7 @@ proceed.addEventListener("click",()=>{
 
           </div>
           <div class="col-sm-6">
-            <select name="VarType" id="" class="form-control">
+            <select name="RouteType${i}" id="" class="form-control">
               <option value="string">string</option>
               <option value="int">integer</option>
               <option value="dateTime">dateTime</option>
@@ -100,7 +100,13 @@ form.onsubmit=  (e)=>{
 
    for(let i=0;i<form.elements.length;i++)
    {
-    ApiData[form.elements[i].name] = form.elements[i].value;
+    if(form.elements[i].type=="checkbox")
+    {
+      ApiData[form.elements[i].name] = form.elements[i].checked;
+    }else{
+      ApiData[form.elements[i].name] = form.elements[i].value;
+    }
+   
  
     // if(form.elements[i].nodeName == "INPUT")
     // {
