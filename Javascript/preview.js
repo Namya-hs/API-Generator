@@ -1,9 +1,29 @@
   var getUrl = document.getElementById("url");
-  var getMethod = document.getElementById("method");
- 
+  //var getMethod = document.getElementById("method");
+  var methodType = document.getElementsByClassName("methodType")[0];
+ var MainBody = document.getElementsByClassName("mainbody")[0];
  var data = localStorage.getItem("ApiData")
+ var region = document.getElementById("region");
  if(data != null) {
     var jsonData = JSON.parse(data);
-    getMethod.innerHTML = `<h4>${jsonData.method} </h4>`
-    getUrl.innerHTML = `<h4>${jsonData.url}</h4>`;
+    methodType.innerHTML = `${(jsonData.method)}`
+    getUrl.innerHTML = `<h5 >${jsonData.url}</h5>`;
+    region.innerText = "Region : "  + jsonData.Region
+    if(jsonData.method == "GET"){
+        methodType.classList.add("btn","btn-primary")
+        MainBody.classList.add("alert","alert-primary")
+    }
+    else if(jsonData.method == "POST"){
+        methodType.classList.add("btn","btn-success")
+        MainBody.classList.add("alert","alert-success")
+    }
+    else if(jsonData.method == "PUT" || jsonData.method == "PATCH"){
+        methodType.classList.add("btn","btn-warning")
+        MainBody.classList.add("alert","alert-warning")
+    }
+    else {
+        methodType.classList.add("btn","btn-danger")
+        MainBody.classList.add("alert","alert-danger")
+    }
  }
+
