@@ -2,8 +2,10 @@
   //var getMethod = document.getElementById("method");
   var methodType = document.getElementsByClassName("methodType")[0];
  var MainBody = document.getElementsByClassName("mainbody")[0];
+ var reqBody = document.getElementsByClassName('req-body')[0];
  var data = localStorage.getItem("ApiData")
  var region = document.getElementById("region");
+ var reqBodyContent=document.getElementsByClassName("reqBodyContent")[0];
  if(data != null) {
     var jsonData = JSON.parse(data);
     methodType.innerHTML = `${(jsonData.method)}`
@@ -24,6 +26,15 @@
     else {
         methodType.classList.add("btn","btn-danger")
         MainBody.classList.add("alert","alert-danger")
+    }
+
+
+
+    //requestbody
+    if(jsonData['req-body']==true)
+    {
+        reqBody.style.display = "block";
+        reqBodyContent.innerText = jsonData['requestBody']
     }
  }
 
