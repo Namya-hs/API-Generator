@@ -3,9 +3,11 @@
   var methodType = document.getElementsByClassName("methodType")[0];
  var MainBody = document.getElementsByClassName("mainbody")[0];
  var reqBody = document.getElementsByClassName('req-body')[0];
+var resBody = document.getElementsByClassName('res-body')[0];
  var data = localStorage.getItem("ApiData")
  var region = document.getElementById("region");
  var reqBodyContent=document.getElementsByClassName("reqBodyContent")[0];
+ var resBodyContent = document.getElementsByClassName("resBodyContent")[0];
  if(data != null) {
     var jsonData = JSON.parse(data);
     methodType.innerHTML = `${(jsonData.method)}`
@@ -35,6 +37,13 @@
     {
         reqBody.style.display = "block";
         reqBodyContent.innerText = jsonData['requestBody']
+    }
+
+    //responsebody
+    if(jsonData['res-body']==true)
+    {
+        resBody.style.display = "block";
+        resBodyContent.innerText = jsonData['reposnseBody']
     }
  }
 
