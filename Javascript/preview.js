@@ -32,6 +32,8 @@ var resBody = document.getElementsByClassName('res-body')[0];
 
 
 
+
+
     //requestbody
     if(jsonData['req-body']==true)
     {
