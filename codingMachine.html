@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>API Generator</title>
+  <link rel="stylesheet" href="./styles/style.css">
+</head>
+<style>
+    a{
+        text-decoration: none;
+    }
+    .collapsible {
+  background-color: #777;
+  color: white;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.active, .collapsible:hover {
+  background-color: #555;
+}
+
+.content {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: #f1f1f1;
+}
+</style>
+<body>
+
+  <!--Nav bar -->
+  <nav class="navbar navbar-expand-lg bg-body-tertiary navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">API Generator</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+        aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarScroll">
+        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Link
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" aria-disabled="true">Link</a>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+<!-- main contain -->
+<div class="container mt-2">
+    <p class="text-center"><i class="fa-solid fa-robot"></i> Please folllow the following Steps</p>
+
+<ul>
+    <li><a href="#clone"><i class="fa-solid fa-clone"></i> Clone The Project </a> </li>
+    <li><a href="#Open"><i class="fa-solid fa-folder-open"></i> Open Middleware and Api Adapter Project </a></li>
+    <li><a href="#branch"><i class="fa-solid fa-code-branch"></i> Create Feature Branch </a></li>
+    <li><a href="#s"><i class="fa-solid fa-pen-to-square"></i> Edit Middleware Configuration.json </a></li>
+    <li><a href="#e"><i class="fa-solid fa-pen-to-square"></i> Api Adapter Changes </a></li>
+
+</ul>
+</div>
+<div class="container mt-3">
+    <!-- step first 
+ -->
+ <button type="button" class="collapsible">Step 1 : <a name="clone"></a> <i class="fa-solid fa-clone"></i>  Clone The project </button>
+ <div class="content">
+  <p>Initially, log in to Azure DevOps using your developer (ex:abc@incadeadev.com) account. Then, navigate to the repository section by clicking on the corresponding option in the navigation bar. From there, locate and select the project labeled 'WAP-API-Component'. Finally, clone the project by clicking on the 'Clone' button. <em>"Additionally, ensure that you select the 'develop' branch before proceeding with the cloning process."</em></p>
+ <a href="./styles/img/clone.png" target="_blank"> <img src="./styles/img/clone.png" alt="" class="img-fluid mt-2"></a>
+
+ </div>
+  <!-- step first ends here -->
+  <!-- second stpe  -->
+ <button type="button" class="collapsible">Stpe 2 : <i class="fa-solid fa-folder-open"></i> <a name="Open"></a> Open Middleware and Api Adapter Project </button>
+ <div class="content">
+   <p><li>Now, in 2nd step navigate to the directory where you cloned the project and open two specific folders: <b>'incadea.API Middleware'</b> and <b>'incadea.API Adapter'</b>.</li></p>
+  <a href="./styles/img/open1.png" target="_blank"> <img src="./styles/img/open1.png" alt="" class="img-fluid mt-2" style="height: 400px;"></a>
+  <p class="mt-2"><li>
+   In the <b>'incadea.API Middleware'</b> folder, find the file named <b>'incadea.api.middleware.sln'</b> and open it using Visual Studio or any other preferred integrated development environment (IDE), <em>preferably Visual Studio 2022 Community version.</em> Similarly, in the <b>'incadea.API Adapter'</b> folder, locate and open the <b>'incadea.api.sln'</b> file.
+ </li>
+</p>
+
+<div class="row mt-2">
+    <div class="col-sm-6"><a href="./styles/img/clone2-1.png" target="_blank"><img src="./styles/img/clone2-1.png" alt="" class="img-fluid" style="height: 400px;"></a></div>
+    <div class="col-sm-6"><a href="./styles/img/clone2-2.png" target="_blank"><img src="./styles/img/clone2-2.png" alt="" class="img-fluid" style="height: 400px;"></a></div>
+</div>
+ </div>
+ <!-- <second step end here -->
+    <!-- step 3 -->
+ <button type="button" class="collapsible">Step 3 : <i class="fa-solid fa-code-branch"></i> <a name="branch"></a> Creating the feature branch</button>
+ <div class="content">
+    <p><li class="mt-2">
+ 
+   
+After opening either the Middleware or API Adapter solution file (.sln) in Visual Studio, navigate to the bottom of the Visual Studio interface. There, you'll notice the option to <b>develop</b> represented by a Git icon ( <i class="fa-solid fa-code-branch"></i>). Click on this icon to access the branch selection menu. Choose the 'develop' branch from the list provided.
+ 
+   </li>   </p>
+   <div class="row mt-2">
+    <div class="col-sm-4"><a href="./styles/img/branch1-1.png" target="_blank"><img src="./styles/img/branch1-1.png" alt="" class="img-fluid" style="height: 400px;"></a></div>
+    <div class="col-sm-4"><a href="./styles/img/branch1-2.png" target="_blank"><img src="./styles/img/branch1-2.png" alt="" class="img-fluid" style="height: 400px;"></a></div>
+    <div class="col-sm-4"><a href="./styles/img/branch1-3.png" target="_blank"><img src="./styles/img/branch1-3.png" alt="" class="img-fluid" style="height: 400px;"></a></div>
+   </div>
+
+   <p>
+    <li>When creating a new branch, ensure it's based on the appropriate branch, typically <b>'develop'</b>, although this <b>may vary</b>. Follow the standard naming convention for feature branches, which should be in <b>kebab case and lowercase</b>. For example, use <b>'features/yourTaskId-name-of-your-task'</b> format, where 'features' remains the prefix and 'yourTaskId-name-of-your-task' describes the task. Remember, <b class="text-danger">consistency and adherence to these conventions are crucial.</b></li>
+   </p>
+ </div>
+<!-- step 3 ends here -->
+</div>
+
+
+  </body>
+<script src="./Javascript/genratecode.js"></script>
+  </html>

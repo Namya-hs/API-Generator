@@ -189,5 +189,11 @@ RouteName.forEach((item, index)=>{
         resBody.style.display = "block";
         resBodyContent.innerText = jsonData['reposnseBody']
     }
+
+
+    //generating the code
+    document.getElementsByClassName("Generate")[0].addEventListener("click", ()=>{
+        location.href = "./codingMachine.html"
+    })
  }
 
