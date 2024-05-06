@@ -17,6 +17,11 @@ for (i = 0; i < coll.length; i++) {
 //giving mw json code
 var config = document.getElementsByClassName("Configuration")[0];
 var data =JSON.parse( localStorage.getItem("ApiData"));
+var cacheSeconds;
+if(data.method=="GET")
+  cacheSeconds = 60;
+else
+  cacheSeconds =0;
 config.innerText = `{
   "DownstreamScheme": "https",
   "DownstreamPathTemplate": "${data.url}",
@@ -28,10 +33,10 @@ config.innerText = `{
     }
   ],
   "UpstreamHttpMethod": [
-    "GET"
+    "${data.method}"
   ],
   "FileCacheOptions": {
-    "TtlSeconds": 0,
+    "TtlSeconds": ${cacheSeconds},
     "Region": "${data.Region}"
   },
   "RateLimitOptions": {
