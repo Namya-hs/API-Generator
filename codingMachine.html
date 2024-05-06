@@ -89,8 +89,8 @@
     <li><a href="#clone"><i class="fa-solid fa-clone"></i> Clone The Project </a> </li>
     <li><a href="#Open"><i class="fa-solid fa-folder-open"></i> Open Middleware and Api Adapter Project </a></li>
     <li><a href="#branch"><i class="fa-solid fa-code-branch"></i> Create Feature Branch </a></li>
-    <li><a href="#s"><i class="fa-solid fa-pen-to-square"></i> Edit Middleware Configuration.json </a></li>
-    <li><a href="#e"><i class="fa-solid fa-pen-to-square"></i> Api Adapter Changes </a></li>
+    <li><a href="#middleware"><i class="fa-solid fa-pen-to-square"></i> Edit Middleware Configuration.json </a></li>
+    <li><a href="#api"><i class="fa-solid fa-pen-to-square"></i> Api Adapter Changes </a></li>
 
 </ul>
 </div>
@@ -141,7 +141,7 @@ After opening either the Middleware or API Adapter solution file (.sln) in Visua
  </div>
 <!-- step 3 ends here -->
     <!-- step 4 -->
-    <button type="button" class="collapsible">Step 4 : <i class="fa-solid fa-pen-to-square"></i> <a name="branch"></a> Edit Middleware Configuration.json</button>
+    <button type="button" class="collapsible">Step 4 : <i class="fa-solid fa-pen-to-square"></i> <a name="middleware"></a> Edit Middleware Configuration.json</button>
     <div class="content">
       <p>
        <li>In the middleware project open <b>incadea.api.middleware.web</b> and locate the <b>Configuration.json</b> file . In this file paste the below code.</li>
@@ -153,8 +153,21 @@ After opening either the Middleware or API Adapter solution file (.sln) in Visua
           
         </code>
       </pre>
+
+      <p>
+        <li><b>Note</b> :In the code snippet provided, there's a key called <b>TtlSeconds</b> within the FileCacheOptions object. This key is utilized for caching data. Typically, we set it to <b>60</b> for GET requests. However, for other HTTP verbs like PUT, DELETE, or PATCH, it's set to 0 by default, though this value may change depending on specific requirements.</li>
+      </p>
     </div>
    <!-- step 4 ends here -->
+
+       <!-- step 5 -->
+       <button type="button" class="collapsible">Step 5 : <i class="fa-solid fa-pen-to-square"></i> <a name="api"></a> Api Adapter Changes</button>
+       <div class="content">
+        
+       </div>
+      <!-- step 5 ends here -->
+
+
 </div>
 
 
