@@ -49,3 +49,23 @@ config.innerText = `{
     "AuthenticationProviderKey": "Bearer"
   }
 },`
+
+let rbody = document.getElementsByClassName("requestBody")[0]
+let res = document.getElementsByClassName("responseBody")[0]
+// to fetch request body for model creation
+if(data["req-body"] == true){
+  rbody.style.display ="block";
+var requestBody = data.requestBody;
+let reqModel = document.getElementsByClassName("reqModel")[0]
+reqModel.innerHTML = requestBody;
+}
+
+console.log(data["res-body"])
+if(data["res-body"] == true) {
+  res.style.display = "block";
+  var responseBody = data.responseBody;
+  let resModel = document.getElementsByClassName("resModel")[0]
+  resModel.innerHTML = responseBody;
+  console.log(responseBody, "responseeeeeeeee");
+}
+

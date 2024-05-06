@@ -187,7 +187,7 @@ RouteName.forEach((item, index)=>{
     if(jsonData['res-body']==true)
     {
         resBody.style.display = "block";
-        resBodyContent.innerText = jsonData['reposnseBody']
+        resBodyContent.innerText = jsonData['responseBody']
     }
 
 
