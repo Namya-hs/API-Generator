@@ -69,3 +69,43 @@ if(data["res-body"] == true) {
   console.log(responseBody, "responseeeeeeeee");
 }
 
+//controller basic code structure
+var controller = document.getElementsByClassName("controller")[0];
+controller.innerHTML = `
+[HttpPost] 
+[Route("/api/sales/companies/{CompanyName}/purchaseorders")]
+[ValidateModelState]
+[SwaggerOperation("Create a purchase order")]
+[SwaggerResponse(statusCode: 201, description: "The purchase order has been created successfully")]
+[SwaggerResponse(statusCode: 400, type: typeof(Error), description: "A client error")]
+[SwaggerResponse(statusCode: 500, type: typeof(Error), description: "A server and business error")]
+public ObjectResult PurchaseOrder([FromHeader][Required] string authorization,
+ [FromRoute][Required] string companyName,
+ [FromQuery][Required] string locationId,
+ [FromBody] VehiclePurchaseDocument VehiclePurchaseDocument,
+ [FromHeader(Name = BasicConfiguration.AcceptLanguage)] string acceptLanguage)
+{
+    var bodyParameters = new Dictionary<string, string> {
+            {BasicConfiguration.AcceptLanguage, acceptLanguage},
+            {BasicConfiguration.LocationId, locationId },
+            {string.Empty, JsonConvert.SerializeObject(VehiclePurchaseDocument) }
+        };
+    var response = ProcessMessage<PurchaseOrderResponse>(bodyParameters, companyName,
+        ASAConfiguration.PurchaseDocumentSoapAction, ASAConfiguration.ModuleCode);
+    return new ObjectResult(response.PurchaseOrders) { StatusCode = (int)HttpStatusCode.Created };
+}`
+
+//soapAction
+var soapAction = document.getElementsByClassName("soapAction")[0];
+soapAction.innerText = `public const string SoapActionName = "SoapActionName";`
+
+//application settings file
+var applicationSetting = document.getElementsByClassName("appln")[0];
+applicationSetting.innerText = `ValidateKey(RegionConfiguration.SoapActionName);`
+
+var appSetting = document.getElementsByClassName("appSetting")[0];
+appSetting.innerHTML = `
+{
+  "Key": "SoapActionName",
+  "Value": "urn:microsoft-dynamics-schemas/codeunit/Region:MethodName"
+}`
