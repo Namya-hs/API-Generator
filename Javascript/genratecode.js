@@ -71,12 +71,15 @@ if(data["res-body"] == true) {
 
 //controller basic code structure
 var controller = document.getElementsByClassName("controller")[0];
+var m = function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+}
 controller.innerHTML = `
-[HttpPost] 
-[Route("/api/sales/companies/{CompanyName}/purchaseorders")]
+[Http${m(data.method)}] 
+[Route("${data.url}")]
 [ValidateModelState]
-[SwaggerOperation("Create a purchase order")]
-[SwaggerResponse(statusCode: 201, description: "The purchase order has been created successfully")]
+[SwaggerOperation("What does this api do?")]
+[SwaggerResponse(statusCode: 201, description: "Status message")]
 [SwaggerResponse(statusCode: 400, type: typeof(Error), description: "A client error")]
 [SwaggerResponse(statusCode: 500, type: typeof(Error), description: "A server and business error")]
 public ObjectResult PurchaseOrder([FromHeader][Required] string authorization,
