@@ -22,7 +22,8 @@ if(data.method=="GET")
   cacheSeconds = 60;
 else
   cacheSeconds =0;
-config.innerText = `{
+config.innerHTML = `
+{
   "DownstreamScheme": "https",
   "DownstreamPathTemplate": "${data.url}",
   "UpstreamPathTemplate": "${data.url}",
@@ -74,6 +75,43 @@ var controller = document.getElementsByClassName("controller")[0];
 var m = function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
+
+var regionConfig = ()=>{
+  if(data.Region == "ASE"){
+    return "Service"
+  }
+  else if(data.Region == "FREE"){
+    return "Basic"
+  }
+  else if(data.Region == "VHC"){
+    return "VehicleChecklist"
+  }
+  else if(data.Region == "OAB"){
+    return "OAB"
+  }
+  else {
+    return "ASA"
+  }
+}
+
+var valueRegion = ()=>{
+  if(data.Region == "ASE"){
+    return "ASE"
+  }
+  else if(data.Region == "FREE"){
+    return "ABA"
+  }
+  else if(data.Region == "VHC"){
+    return "AVC"
+  }
+  else if(data.Region == "OAB"){
+    return "AOB"
+  }
+  else {
+    return "ASA"
+  }
+}
+
 controller.innerHTML = `
 [Http${m(data.method)}] 
 [Route("${data.url}")]
@@ -82,10 +120,10 @@ controller.innerHTML = `
 [SwaggerResponse(statusCode: 201, description: "Status message")]
 [SwaggerResponse(statusCode: 400, type: typeof(Error), description: "A client error")]
 [SwaggerResponse(statusCode: 500, type: typeof(Error), description: "A server and business error")]
-public ObjectResult PurchaseOrder([FromHeader][Required] string authorization,
+public ObjectResult MethodName([FromHeader][Required] string authorization,
  [FromRoute][Required] string companyName,
  [FromQuery][Required] string locationId,
- [FromBody] VehiclePurchaseDocument VehiclePurchaseDocument,
+ [FromBody] Model obj,
  [FromHeader(Name = BasicConfiguration.AcceptLanguage)] string acceptLanguage)
 {
     var bodyParameters = new Dictionary<string, string> {
@@ -94,8 +132,8 @@ public ObjectResult PurchaseOrder([FromHeader][Required] string authorization,
             {string.Empty, JsonConvert.SerializeObject(VehiclePurchaseDocument) }
         };
     var response = ProcessMessage<PurchaseOrderResponse>(bodyParameters, companyName,
-        ASAConfiguration.PurchaseDocumentSoapAction, ASAConfiguration.ModuleCode);
-    return new ObjectResult(response.PurchaseOrders) { StatusCode = (int)HttpStatusCode.Created };
+      ${regionConfig(data.Region)}Configuration.PurchaseDocumentSoapAction, ${regionConfig(data.Region)}Configuration.ModuleCode);
+    return new ObjectResult(response.modelName) { StatusCode = (int)HttpStatusCode.message };
 }`
 
 //soapAction
@@ -104,11 +142,11 @@ soapAction.innerText = `public const string SoapActionName = "SoapActionName";`
 
 //application settings file
 var applicationSetting = document.getElementsByClassName("appln")[0];
-applicationSetting.innerText = `ValidateKey(RegionConfiguration.SoapActionName);`
+applicationSetting.innerText = `ValidateKey(${regionConfig(data.Region)}Configuration.SoapActionName);`
 
 var appSetting = document.getElementsByClassName("appSetting")[0];
 appSetting.innerHTML = `
 {
   "Key": "SoapActionName",
-  "Value": "urn:microsoft-dynamics-schemas/codeunit/Region:MethodName"
+  "Value": "urn:microsoft-dynamics-schemas/codeunit/${valueRegion(data.Region)}:MethodName"
 }`
