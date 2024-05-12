@@ -180,14 +180,14 @@ RouteName.forEach((item, index)=>{
     if(jsonData['req-body']==true)
     {
         reqBody.style.display = "block";
-        reqBodyContent.innerText = jsonData['requestBody']
+        reqBodyContent.innerHTML = jsonData['requestBody']
     }
 
     //responsebody
     if(jsonData['res-body']==true)
     {
         resBody.style.display = "block";
-        resBodyContent.innerText = jsonData['responseBody']
+        resBodyContent.innerHTML = jsonData['responseBody']
     }
 
 
