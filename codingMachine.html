@@ -94,6 +94,7 @@
       <li><a href="#clone"><i class="fa-solid fa-clone"></i> Clone The Project </a> </li>
       <li><a href="#Open"><i class="fa-solid fa-folder-open"></i> Open Middleware and Api Adapter Project </a></li>
       <li><a href="#branch"><i class="fa-solid fa-code-branch"></i> Create Feature Branch </a></li>
+      <li><a href="#mw-setp"><i class="fa-solid fa-wrench"></i> Middleware Setup </a></li>
       <li><a href="#middleware"><i class="fa-solid fa-pen-to-square"></i> Edit Middleware Configuration.json </a></li>
       <li><a href="#api"><i class="fa-solid fa-pen-to-square"></i> Api Adapter Changes </a></li>
       <li><a href="#api"><i class="fa-solid fa-bug"></i> Testing endpoint locally </a></li>
@@ -175,8 +176,84 @@
       </p>
     </div>
     <!-- step 3 ends here -->
-    <!-- step 4 -->
-    <button type="button" class="collapsible">Step 4 : <i class="fa-solid fa-pen-to-square"></i> <a
+
+    <!-- Step 4 -->
+    <button type="button" class="collapsible">Step 4 : <i class="fa-solid fa-wrench"></i> <a name="branch"></a>
+      Middleware Setup</button>
+    <div class="content">
+      <p>
+        <li>
+          Set <b>Middleware Admin</b> and <b>Middleware Web</b> as startup projects
+        </li>
+      </p>
+
+      <div class="container"><a href="./styles/img/mw-project.png" target="_blank"><img src="./styles/img/mw-project.png" alt=""
+        class="img-fluid" style="height: 400px;"></a>
+      </div>
+    
+      <p>
+        <li>
+          Make sure you have downloaded postgree SQL and remember the password.
+          <br>
+          Change the password of postgree in appsettings.json file of middleware admin and middleware web.
+        </li>
+      </p>
+      <div class="container"><a href="./styles/img/appsettings.png" target="_blank"><img src="./styles/img/appsettings.png" alt=""
+        class="img-fluid" style="height: 400px;"></a>
+      </div>
+
+      <p>
+        <li>
+          Change the <b>launchSettings.json</b> file of middleware-admin project to the below code.
+        </li>
+      </p>
+
+      <pre>
+        <code class="language-JSON">
+          {
+            "iisSettings": {
+              "windowsAuthentication": false,
+              "anonymousAuthentication": true,
+              "iisExpress": {
+                "applicationUrl": "http://localhost:56494/",
+                "sslPort": 44390
+              }
+            },
+            "profiles": {
+              "IIS Express": {
+                "commandName": "IISExpress",
+                "launchBrowser": true,
+                "environmentVariables": {
+                  "ASPNETCORE_ENVIRONMENT": "Development"
+                }
+              },
+              "incadea.api.middleware.admin": {
+                "commandName": "Project",
+                "launchBrowser": true,
+                "environmentVariables": {
+                  "ASPNETCORE_ENVIRONMENT": "Development"
+                },
+                "applicationUrl": "https://localhost:5001;http://localhost:5000"
+              }
+            }
+          }
+        </code>
+      </pre>
+
+      <p>
+        <li>
+          Comment the <b>RunBackgroundJob</b> in <b>program.cs</b> file of middleware admin project.
+        </li>
+      </p>
+      <div class="container"><a href="./styles/img/mw-admin-backgroundJob.png" target="_blank"><img src="./styles/img/mw-admin-backgroundJob.png" alt=""
+        class="img-fluid" style="height: 300px;"></a>
+    </div>
+    </div>
+    <!-- Step 4 ends here -->
+
+    
+    <!-- step 5 -->
+    <button type="button" class="collapsible">Step 5 : <i class="fa-solid fa-pen-to-square"></i> <a
         name="middleware"></a> Edit Middleware Configuration.json</button>
     <div class="content">
       <p>
@@ -199,10 +276,10 @@
           value may change depending on specific requirements.</li>
       </p>
     </div>
-    <!-- step 4 ends here -->
+    <!-- step 5 ends here -->
 
-    <!-- step 5 -->
-    <button type="button" class="collapsible">Step 5 : <i class="fa-solid fa-pen-to-square"></i> <a name="api"></a> Api
+    <!-- step 6 -->
+    <button type="button" class="collapsible">Step 6 : <i class="fa-solid fa-pen-to-square"></i> <a name="api"></a> Api
       Adapter Changes</button>
     <div class="content">
       <!--request body model-->
@@ -308,11 +385,11 @@
           </pre>
       </div>
     </div>
-    <!-- step 5 ends here -->
+    <!-- step 6 ends here -->
 
 
-    <!--Step 6 -->
-    <button type="button" class="collapsible">Step 6 : <i class="fa-solid fa-bug"></i> <a name="api"></a> Testing
+    <!--Step 7 -->
+    <button type="button" class="collapsible">Step 7 : <i class="fa-solid fa-bug"></i> <a name="api"></a> Testing
       endpoint locally</button>
     <div class="content">
       <p>
@@ -322,7 +399,43 @@
       </p>
 
       <div class="container"><a href="./styles/img/vpn.png" target="_blank"><img src="./styles/img/vpn.png" alt=""
-            class="img-fluid" style="height: 400px;"></a></div>
+            class="img-fluid" style="height: 400px;"></a>
+      </div>
+      
+      <p>
+        <li>
+          Make sure the encrypted credentials are there in the appsettings file of api-adapter project.
+          If the encrypted credentials are not there in appsettings file, add the credentials manually.
+        </li>
+      </p>
+
+      <div class="container"><a href="./styles/img/cred.png" target="_blank"><img src="./styles/img/cred.png" alt=""
+        class="img-fluid" style="height: 400px;"></a>
+      </div>
+
+      <p>
+        <li>
+          In the <b>Authentication.cs</b> file of api adapter comment the below lines to avoid ldap error
+        </li>
+      </p>
+
+      <div class="container"><a href="./styles/img/ldap.png" target="_blank"><img src="./styles/img/ldap.png" alt=""
+        class="img-fluid" style="height: 400px;"></a>
+      </div>
+
+      <p>
+        <li>
+          Make sure you have the local setup in postgre SQL for your api-adapter service
+        </li>
+      </p>
+
+      <div class="container"><a href="./styles/img/pg-local.png" target="_blank"><img src="./styles/img/pg-local.png" alt=""
+        class="img-fluid" style="height: 400px;"></a>
+      </div>
+
+      <p>
+        <li>By modifying these changes you will be able to test the endpoint locally.</li>
+      </p>
 
     </div>
 
