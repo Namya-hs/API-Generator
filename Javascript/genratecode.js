@@ -112,6 +112,65 @@ var valueRegion = () => {
   }
 }
 
+//adding parameter(headers,route,query)
+function ConvertArray(data)
+{
+  return data.split(",");
+}
+var globalParameterString = ""
+function AddParameters()
+{
+  //for the headers
+  header = ConvertArray(localStorage.getItem("headerName"));
+  headerType = ConvertArray(localStorage.getItem("headerType"));
+if(header != null && headerType !=null)
+  {
+    var headerString=""
+    Array.from(header).forEach((e,index)=>{
+      if(e.length == 0)
+        e= "unknownHeader"+index;
+      headerString += `[FromHeader][Required] ${headerType[index]} ${e},`
+    })
+    globalParameterString += headerString;
+  console.log(headerString);
+  }
+
+
+  //for route 
+  route = ConvertArray(localStorage.getItem("routeName"));
+  routeType = ConvertArray(localStorage.getItem("routeType"));
+  if (route != null && routeType != null) {
+    var routeString = ""
+    Array.from(route).forEach((e, index) => {
+
+      if(e.length == 0)
+        e= "unknownRoute"+index;
+      routeString += `[FromRoute][Required] ${routeType[index]} ${e},`
+    })
+    globalParameterString += routeString;
+    console.log(routeString, "route");
+  }
+
+  //for the query
+  query = ConvertArray(localStorage.getItem("queryName"));
+  queryType = ConvertArray(localStorage.getItem("queryType"));
+  if (query != null && queryType != null) {
+    var queryString = ""
+    Array.from(query).forEach((e, index) => {
+      if(e.length == 0)
+        e= "unknownQuery"+index;
+      queryString += `[FromQuery][Required] ${queryType[index]} ${e},`
+    })
+    globalParameterString += queryString;
+    console.log(queryString, "query");
+  }
+
+
+
+}
+
+AddParameters();
+
 controller.innerHTML = `
 [Http${m(data.method)}] 
 [Route("${data.url}")]
@@ -120,10 +179,7 @@ controller.innerHTML = `
 [SwaggerResponse(statusCode: 201, description: "Status message")]
 [SwaggerResponse(statusCode: 400, type: typeof(Error), description: "A client error")]
 [SwaggerResponse(statusCode: 500, type: typeof(Error), description: "A server and business error")]
-public ObjectResult MethodName([FromHeader][Required] string authorization,
- [FromRoute][Required] string companyName,
- [FromQuery][Required] string locationId,
- [FromBody] Model obj,
+public ObjectResult MethodName(${globalParameterString}
  [FromHeader(Name = BasicConfiguration.AcceptLanguage)] string acceptLanguage)
 {
     var bodyParameters = new Dictionary<string, string> {

@@ -46,8 +46,9 @@ proceed.addEventListener("click", () => {
             <select name="headerVarType${i}" id="" class="form-control">
               <option value="string">string</option>
               <option value="int">integer</option>
-              <option value="dateTime">dateTime</option>
+              <option value="DateTime">dateTime</option>
               <option value="bool">boolean</option>
+              
             </select>
           </div>
         </div>`

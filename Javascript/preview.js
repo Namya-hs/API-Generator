@@ -197,3 +197,10 @@ RouteName.forEach((item, index)=>{
     })
  }
 
+ localStorage.setItem("routeName",RouteName);
+ localStorage.setItem("routeType",RouteType);
+ localStorage.setItem("headerType",headerType);
+ localStorage.setItem("headerName",headerName);
+ localStorage.setItem("queryType",QueryType);
+ localStorage.setItem("queryName",QueryName);
+
