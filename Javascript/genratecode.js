@@ -3,7 +3,7 @@ var coll = document.getElementsByClassName("collapsible");
 var i;
 
 for (i = 0; i < coll.length; i++) {
-  coll[i].addEventListener("click", function() {
+  coll[i].addEventListener("click", function () {
     this.classList.toggle("active");
     var content = this.nextElementSibling;
     if (content.style.display === "block") {
@@ -16,12 +16,12 @@ for (i = 0; i < coll.length; i++) {
 
 //giving mw json code
 var config = document.getElementsByClassName("Configuration")[0];
-var data =JSON.parse( localStorage.getItem("ApiData"));
+var data = JSON.parse(localStorage.getItem("ApiData"));
 var cacheSeconds;
-if(data.method=="GET")
+if (data.method == "GET")
   cacheSeconds = 60;
 else
-  cacheSeconds =0;
+  cacheSeconds = 0;
 config.innerHTML = `
 {
   "DownstreamScheme": "https",
@@ -54,15 +54,15 @@ config.innerHTML = `
 let rbody = document.getElementsByClassName("requestBody")[0]
 let res = document.getElementsByClassName("responseBody")[0]
 // to fetch request body for model creation
-if(data["req-body"] == true){
-  rbody.style.display ="block";
-var requestBody = data.requestBody;
-let reqModel = document.getElementsByClassName("reqModel")[0]
-reqModel.innerHTML = requestBody;
+if (data["req-body"] == true) {
+  rbody.style.display = "block";
+  var requestBody = data.requestBody;
+  let reqModel = document.getElementsByClassName("reqModel")[0]
+  reqModel.innerHTML = requestBody;
 }
 
 console.log(data["res-body"])
-if(data["res-body"] == true) {
+if (data["res-body"] == true) {
   res.style.display = "block";
   var responseBody = data.responseBody;
   let resModel = document.getElementsByClassName("resModel")[0]
@@ -76,17 +76,17 @@ var m = function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
 }
 
-var regionConfig = ()=>{
-  if(data.Region == "ASE"){
+var regionConfig = () => {
+  if (data.Region == "ASE") {
     return "Service"
   }
-  else if(data.Region == "FREE"){
+  else if (data.Region == "FREE") {
     return "Basic"
   }
-  else if(data.Region == "VHC"){
+  else if (data.Region == "VHC") {
     return "VehicleChecklist"
   }
-  else if(data.Region == "OAB"){
+  else if (data.Region == "OAB") {
     return "OAB"
   }
   else {
@@ -94,17 +94,17 @@ var regionConfig = ()=>{
   }
 }
 
-var valueRegion = ()=>{
-  if(data.Region == "ASE"){
+var valueRegion = () => {
+  if (data.Region == "ASE") {
     return "ASE"
   }
-  else if(data.Region == "FREE"){
+  else if (data.Region == "FREE") {
     return "ABA"
   }
-  else if(data.Region == "VHC"){
+  else if (data.Region == "VHC") {
     return "AVC"
   }
-  else if(data.Region == "OAB"){
+  else if (data.Region == "OAB") {
     return "AOB"
   }
   else {

@@ -104,17 +104,17 @@ form.onsubmit = (e) => {
     // ApiData[form.elements[i].name] = form.elements[i].value;
 
     // if (form.elements[i].nodeName == "INPUT" ) {
-      if (form.elements[i].name.toString().includes("header")) {
-        Header.push({ [form.elements[i].name]: form.elements[i].value });
-      } else if (form.elements[i].name.toString().includes("query")) {
-        Query.push({ [form.elements[i].name]: form.elements[i].value });
-      } else if (form.elements[i].name.toString().includes("route")) {
-        Route.push({ [form.elements[i].name]: form.elements[i].value });
-      } else if (form.elements[i].type == "checkbox") {
-        ApiData[form.elements[i].name] = form.elements[i].checked;
-      } else {
-        ApiData[form.elements[i].name] = form.elements[i].value;
-      }
+    if (form.elements[i].name.toString().includes("header")) {
+      Header.push({ [form.elements[i].name]: form.elements[i].value });
+    } else if (form.elements[i].name.toString().includes("query")) {
+      Query.push({ [form.elements[i].name]: form.elements[i].value });
+    } else if (form.elements[i].name.toString().includes("route")) {
+      Route.push({ [form.elements[i].name]: form.elements[i].value });
+    } else if (form.elements[i].type == "checkbox") {
+      ApiData[form.elements[i].name] = form.elements[i].checked;
+    } else {
+      ApiData[form.elements[i].name] = form.elements[i].value;
+    }
     // } else {
     //   ApiData[form.elements[i].name] = form.elements[i].value;
     // }
@@ -126,11 +126,11 @@ form.onsubmit = (e) => {
 
   console.log(ApiData);
 
-//clearing the local storage
-localStorage.clear();
+  //clearing the local storage
+  localStorage.clear();
 
-//store the data in local storage
-localStorage.setItem("ApiData", JSON.stringify(ApiData))
+  //store the data in local storage
+  localStorage.setItem("ApiData", JSON.stringify(ApiData))
 
-location.href="./../preview.html"
+  location.href = "./../preview.html"
 }
