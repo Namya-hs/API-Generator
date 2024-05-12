@@ -166,6 +166,13 @@ if(header != null && headerType !=null)
   }
 
 
+  //for body parameter
+  var bodyString = ""
+  if(data["req-body"] == true){
+    
+    bodyString += `[FromBody][Required] RequestModel model,`
+  }
+  globalParameterString += bodyString;
 
 }
 
