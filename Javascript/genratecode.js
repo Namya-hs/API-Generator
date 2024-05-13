@@ -115,6 +115,7 @@ var valueRegion = () => {
 //adding parameter(headers,route,query)
 function ConvertArray(data)
 {
+  if(data!=null)
   return data.split(",");
 }
 var globalParameterString = ""

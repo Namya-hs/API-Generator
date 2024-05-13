@@ -1,3 +1,5 @@
+
+
   var getUrl = document.getElementById("url");
   //var getMethod = document.getElementById("method");
   var methodType = document.getElementsByClassName("methodType")[0];
@@ -196,11 +198,23 @@ RouteName.forEach((item, index)=>{
         location.href = "./codingMachine.html"
     })
  }
+localStorage.removeItem("routeName");
+localStorage.removeItem("routeType");
+localStorage.removeItem("headerType");
+localStorage.removeItem("headerName");
+localStorage.removeItem("queryType");
+localStorage.removeItem("queryName");
 
+ if(RouteName != undefined)
  localStorage.setItem("routeName",RouteName);
+ if(RouteType != undefined)
  localStorage.setItem("routeType",RouteType);
+ if(headerType != undefined)
  localStorage.setItem("headerType",headerType);
+ if(headerName != undefined)
  localStorage.setItem("headerName",headerName);
- localStorage.setItem("queryType",QueryType);
- localStorage.setItem("queryName",QueryName);
+ if(QueryType != undefined)
+    localStorage.setItem("queryType",QueryType);
+ if(QueryName != undefined)
+    localStorage.setItem("queryName",QueryName);
 
