@@ -193,7 +193,7 @@ public ObjectResult MethodName(${globalParameterString}
     var bodyParameters = new Dictionary<string, string> {
             {BasicConfiguration.AcceptLanguage, acceptLanguage},
             {BasicConfiguration.LocationId, locationId },
-            {string.Empty, JsonConvert.SerializeObject(VehiclePurchaseDocument) }
+            {string.Empty, JsonConvert.SerializeObject(model) }
         };
     var response = ProcessMessage<PurchaseOrderResponse>(bodyParameters, companyName,
       ${regionConfig(data.Region)}Configuration.SoapActionName, ${regionConfig(data.Region)}Configuration.ModuleCode);
