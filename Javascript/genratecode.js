@@ -196,7 +196,7 @@ public ObjectResult MethodName(${globalParameterString}
             {string.Empty, JsonConvert.SerializeObject(VehiclePurchaseDocument) }
         };
     var response = ProcessMessage<PurchaseOrderResponse>(bodyParameters, companyName,
-      ${regionConfig(data.Region)}Configuration.PurchaseDocumentSoapAction, ${regionConfig(data.Region)}Configuration.ModuleCode);
+      ${regionConfig(data.Region)}Configuration.SoapActionName, ${regionConfig(data.Region)}Configuration.ModuleCode);
     return new ObjectResult(response.modelName) { StatusCode = (int)HttpStatusCode.message };
 }`
 
